@@ -28,11 +28,13 @@ with col1:
 with col2:
     st.metric("Total Orders", len(df))
 
+col1, col2=st.columns(2)
+with col1:
 # Data Table
-st.subheader("Sales Data")
-st.dataframe(df)
-
+    st.subheader("Sales Data")
+    st.dataframe(df)
+with col2:
 # Chart
-st.subheader("Sales by Category")
-category_sales = df.groupby('Category')['Total'].sum().reset_index()
-st.bar_chart(category_sales.set_index('Category'))
+    st.subheader("Sales by Category")
+    category_sales = df.groupby('Category')['Total'].sum().reset_index()
+    st.bar_chart(category_sales.set_index('Category'))
